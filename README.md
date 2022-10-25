@@ -8,7 +8,7 @@ Done with Python 3.7. Libraries used:
 • Numpy>=1.14.3
 • Pandas>=0.22.0
 • Scipy>=1.0.0
-• Brainflow 
+• Brainflow
 • Tensorflow
 • Pyserial>=2.7
 • Requests>=2.7
