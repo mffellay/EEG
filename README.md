@@ -26,7 +26,7 @@ Done with Python 3.7. Libraries used:
   
 Since this was done on Jupyter, it is all executed in cascade. I will be separating parts of the code into different .py files. The order is as follows:
   1. record.py
-  2. initialize.py
+  2. initializedata.py
   3. filtering.py
   4. fourier.py
   5. autoencoder.py
