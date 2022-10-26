@@ -1,8 +1,7 @@
 # Libraries used for K-Means algorithm which are contained in sklearn. 
 from sklearn.cluster import KMeans 
 from sklearn.preprocessing import scale 
-# Range of samples to utilize for manipulation, in this case the range is [600-850] 
-restar este valor a los datos. 
+# Range of samples to utilize for manipulation, in this case the range is [600-850]  
 kdatos = filtered[600:850] 
 kprom=np.average(x) 
 kdatos=(kdatos-kprom) 
