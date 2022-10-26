@@ -1,5 +1,5 @@
 filtered = butter_bandpass_filter(outputSignal[1], lowcut=2, highcut=35, fs=250, order=6) 
-data = filtered[600:850]  # rango en el que se aprecia el impulso 
+data = filtered[600:850]  # range selected in which the impulse is visible 
 fft_vals = np.absolute(np.fft.rfft(data)) 
 fft_freq = np.fft.rfftfreq(len(data), 1.0/fs) 
 
@@ -14,7 +14,7 @@ for band in eeg_bands:
     freq_ix = np.where((fft_freq >= eeg_bands[band][0]) &  
                        (fft_freq <= eeg_bands[band][1]))[0] 
     eeg_band_fft[band] = np.mean(fft_vals[freq_ix]) 
-    # Aquí se realiza el gráfico de las bandas con su valor promedio. 
+    # EEG Band graph with average values 
 
 df = pd.DataFrame(columns=['band', 'val']) 
 df['band'] = eeg_bands.keys() 
