@@ -15,17 +15,15 @@ atest_data = (atest_data - min_val) / (max_val - min_val)
 atrain_data = tf.cast(atrain_data, tf.float32) 
 atest_data = tf.cast(atest_data, tf.float32)
 
-#Se realiza el gráfico de las muestras que se utilizarán para entrenar el modelo. 
+# Graph of samples to be used for autoencoder model training 
 plt.figure(figsize=(16,10)) 
 plt.grid() 
 plt.plot(np.arange(300), train_data) 
 plt.title("EEG") 
 plt.show()
 
-# Se inicializa el Autoencoder bajo un modelo de detección de anomalías. Se utiliza el modelo secuencial de 
-# Tensorflow Keras que transforma capas a objetos con características de entrenamiento e inferencia. Las capas 
-# a utilizar son del tipo “RElu” o Rectified Linear Unit Activation (Activación de unidad lineal rectificada). El
-# resultado corresponde a una codificación y decodificación de datos que corresponderán al modelo entrenado. 
+# Autoencoder initialization under anomaly detection model. Sequential model of Tensorflow Keras. Layers "relu" used are Rectified Linear Unit Activation layers
+# The result will be data coded and decoded that will be the trained model 
 class AnomalyDetector(Model): 
   def __init__(self): 
     super(AnomalyDetector, self).__init__() 
@@ -41,14 +39,12 @@ class AnomalyDetector(Model):
     encoded = self.encoder(x) 
     decoded = self.decoder(encoded) 
     return decoded 
-# Aquí se llama entonces a la clase definida anteriormente del Autoencoder, utilizando un optimizador llamado
-# “Adam” que corresponde a un método de gradiente descendente estocástico, siendo este un método iterativo 
-# para optimizar una función objetiva basada en la suavidad de la señal. La pérdida a calcular se basa en “mae”
-# Mean Absolute Error o Error Absoluto Promedio. 
+# Optimizer used is called "Adam" corresponding to a Stochastic Gradient Descent, being this an iterative method of objective function optimization
+# Based on signal smoothing. Loss is calculated using the “mae” oe Mean Absolute Error. 
 autoencoder = AnomalyDetector() 
 autoencoder.compile(optimizer='adam', loss='mae') 
-# Aquí se realiza el fit o ajuste del modelo entrenado según el número de épocas. Una época es una iteración por
-# todos los datos de 0 a 100%. Se realiza entonces para 5 épocas. 
+# Trained model fit for the number of epochs will be plotted now
+# 1 epoch corresponds to an iteration of data from beginning to end. 5 epoch graph 
 history = autoencoder.fit(train_data, train_data,
           epochs=5,  
           batch_size=64, 
@@ -56,14 +52,13 @@ history = autoencoder.fit(train_data, train_data,
           shuffle=True) 
 encoded_data = autoencoder.encoder(test_data).numpy() 
 decoded_data = autoencoder.decoder(encoded_data).numpy() 
-# Se procede a graficar el input correspondiente a los datos de prueba, como también la información
-# decodificada, correspondiente al modelo entrenado, llamado “Reconstrucción”. 
+# Input data corresponds to test data, as well as the decoded information, being the trained model, called “Reconstrucción”. 
 plt.title('Entrada y Reconstrucción Autoencoder 5 épocas ', fontsize=12) 
 plt.plot(test_data, 'b') 
 plt.plot(decoded_data, 'r') 
 plt.legend(labels=["Input", "Reconstruccion"]) 
 plt.show() 
-# Se realiza el ajuste para 15 épocas y se grafica de igual manera a la anterior. 
+# 15 epoch adjustment and graph 
 history2 = autoencoder.fit(train_data, train_data,  
           epochs=15,  
           batch_size=64, 
@@ -77,7 +72,7 @@ plt.plot(test_data, 'b')
 plt.plot(decoded_data, 'r') 
 plt.legend(labels=["Input", "Reconstruccion"]) 
 plt.show() 
-# Se realiza el ajuste para 25 épocas y se grafica.
+# 25 epoch adjustment and graph
 history3 = autoencoder.fit(train_data, train_data,  
           epochs=25,  
           batch_size=64, 
@@ -91,7 +86,7 @@ plt.plot(test_data, 'b')
 plt.plot(decoded_data, 'r') 
 plt.legend(labels=["Input", "Reconstruccion"]) 
 plt.show() 
-# Se realiza el ajuste para 50 épocas y se grafica. 
+# 50 epoch adjustment and graph 
 history4 = autoencoder.fit(train_data, train_data,  
           epochs=50,  
           batch_size=64, 
