@@ -54,7 +54,6 @@ plt.legend()
 #Channel 2 plot
 plt.subplot(8, 1, 2) 
 plt.plot(outputSignal[2], label='Canal 2') 
-plt.ylabel('Magnitud', fontsize=18) 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
 #Channel 3 plot
@@ -79,7 +78,6 @@ plt.plot(outputSignal[6], label='Canal 6')
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
 #Channel 7 plot
-plt.ylabel('Magnitud', fontsize=18) 
 plt.subplot(8, 1, 7) 
 plt.plot(outputSignal[7], label='Canal 7') 
 plt.subplots_adjust(hspace=0.5) 
