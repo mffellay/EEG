@@ -1,10 +1,4 @@
-import argparse 
-import time 
-import numpy as np 
-import pandas as pd 
-import matplotlib.pyplot as plt 
-import scipy.signal 
-import brainflow 
+import argparse, time, numpy as np, pandas as pd, matplotlib.pyplot as plt, scipy.signal, brainflow 
 from brainflow.board_shim import BoardShim, BrainFlowInputParams, LogLevels, BoardIds
 
 def main(): 
