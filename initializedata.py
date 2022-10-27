@@ -1,11 +1,3 @@
-import argparse 
-import time 
-import numpy as np 
-import pandas as pd 
-import matplotlib.pyplot as plt 
-import scipy 
-from scipy import signal 
-import brainflow 
 import tensorflow as tf 
 from sklearn.metrics import accuracy_score, precision_score, recall_score 
 from sklearn.model_selection import train_test_split 
@@ -53,41 +45,48 @@ for i in range (1,9):
     outputSignal[i] = signal.filtfilt(b, a, var[i])
 # For all the channels the 50Hz frequency is removed. There is also noise reduction by diving the average of each channel and diving it by the standard deviation.
 
-# Its plotting time
+#Channel 1 plot
+plt.title('Señal Filtrada 50[Hz] Notch ', fontsize=20
 plt.figure(figsize=(16,10)) 
 plt.subplot(8, 1, 1) 
 plt.plot(outputSignal[1],label='Canal 1') 
 plt.legend() 
-plt.title('Señal Filtrada 50[Hz] Notch ', fontsize=20
+#Channel 2 plot
 plt.subplot(8, 1, 2) 
 plt.plot(outputSignal[2], label='Canal 2') 
 plt.ylabel('Magnitud', fontsize=18) 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
+#Channel 3 plot
 plt.subplot(8, 1, 3) 
 plt.plot(outputSignal[3], label='Canal 3') 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
+#Channel 4 plot
 plt.subplot(8, 1, 4) 
 plt.plot(outputSignal[4], label='Canal 4') 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
+#Channel 5 plot
 plt.ylabel('Magnitud', fontsize=18) 
 plt.subplot(8, 1, 5) 
 plt.plot(outputSignal[5], label='Canal 5') 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
+#Channel 6 plot
 plt.subplot(8, 1, 6) 
 plt.plot(outputSignal[6], label='Canal 6') 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
+#Channel 7 plot
 plt.ylabel('Magnitud', fontsize=18) 
 plt.subplot(8, 1, 7) 
 plt.plot(outputSignal[7], label='Canal 7') 
 plt.subplots_adjust(hspace=0.5) 
 plt.legend() 
+#Channel 8 plot
 plt.subplot(8, 1, 8) 
 plt.plot(outputSignal[8], label='Canal 8') 
 plt.xlabel('Muestras', fontsize=20) 
 plt.subplots_adjust(hspace=0.5) 
-plt.legend() 
+plt.legend()
