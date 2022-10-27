@@ -4,16 +4,15 @@ train_data=filtered[600:900]
 test_data=filtered[100:350] 
 atrain_data=filtered2[600:900] 
 atest_data=filtered2[100:350] 
+
 min_val = tf.reduce_min(train_data) 
 max_val = tf.reduce_max(train_data) 
-train_data =(train_data - min_val) / (max_val - min_val) 
-test_data = (test_data - min_val) / (max_val - min_val) 
-train_data = tf.cast(train_data, tf.float32) 
-test_data = tf.cast(test_data, tf.float32) 
-atrain_data =(atrain_data - min_val) / (max_val - min_val) 
-atest_data = (atest_data - min_val) / (max_val - min_val) 
-atrain_data = tf.cast(atrain_data, tf.float32) 
-atest_data = tf.cast(atest_data, tf.float32)
+
+train_data =tf.cast((train_data - min_val) / (max_val - min_val), tf.float32) 
+test_data = tf.cast((test_data - min_val) / (max_val - min_val), tf.float32) 
+
+atrain_data = tf.cast((atrain_data - min_val) / (max_val - min_val), tf.float32) 
+atest_data = tf.cast((atest_data - min_val) / (max_val - min_val), tf.float32)
 
 # Graph of samples to be used for autoencoder model training 
 plt.figure(figsize=(16,10)) 
