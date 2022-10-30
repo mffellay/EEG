@@ -2,8 +2,8 @@ filtered = butter_bandpass_filter(outputSignal[1], lowcut=2, highcut=35, fs=250,
 filtered2=butter_bandpass_filter(outputSignal[2], lowcut=2, highcut=35, fs=250, order=6) 
 train_data=filtered[600:900] 
 test_data=filtered[100:350] 
-atrain_data=filtered2[600:900] 
-atest_data=filtered2[100:350] 
+
+ch2_test_data=filtered2[100:350] 
 
 min_val = tf.reduce_min(train_data) 
 max_val = tf.reduce_max(train_data) 
@@ -11,8 +11,7 @@ max_val = tf.reduce_max(train_data)
 train_data =tf.cast((train_data - min_val) / (max_val - min_val), tf.float32) 
 test_data = tf.cast((test_data - min_val) / (max_val - min_val), tf.float32) 
 
-atrain_data = tf.cast((atrain_data - min_val) / (max_val - min_val), tf.float32) 
-atest_data = tf.cast((atest_data - min_val) / (max_val - min_val), tf.float32)
+ch2_test_data = tf.cast((ch2_test_data - min_val) / (max_val - min_val), tf.float32)
 
 # Graph of samples to be used for autoencoder model training 
 plt.figure(figsize=(16,10)) 
