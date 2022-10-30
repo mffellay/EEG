@@ -24,10 +24,10 @@ plt.legend()
 # Model fit test after 50 epochs and graph.
 # Channel 2 was used for visualization. 
 plt.figure() 
-encoded_data = autoencoder.encoder(ch2_atest_data).numpy() 
+encoded_data = autoencoder.encoder(ch2_test_data).numpy() 
 decoded_data = autoencoder.decoder(encoded_data).numpy() 
 
-plt.plot(ch2_atest_data, 'b') 
+plt.plot(ch2_test_data, 'b') 
 plt.plot(decoded_data, 'r') 
 plt.legend(labels=["Input prueba Ch2.", "Reconstrucción"]) 
 plt.show() 
