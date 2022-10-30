@@ -22,7 +22,8 @@ def main():
     data= board.get_current_board_data(1000) 
     board.stop_stream() 
     board.release_session() 
-    datf= pd.DataFrame(np.transpose(data)) 
+    #To visualize data in real time
+    #datf= pd.DataFrame(np.transpose(data)) 
     #print(' Data From the Board') 
     #print(df.head(10)) 
     DataFilter.write_file(data, 'test2raw.csv','w') 
