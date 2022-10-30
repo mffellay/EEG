@@ -1,9 +1,9 @@
 filtered = butter_bandpass_filter(outputSignal[1], lowcut=2, highcut=35, fs=250, order=6) 
-filtered2=butter_bandpass_filter(outputSignal[2], lowcut=2, highcut=35, fs=250, order=6) 
+filtered_ch2=butter_bandpass_filter(outputSignal[2], lowcut=2, highcut=35, fs=250, order=6) 
 train_data=filtered[600:900] 
 test_data=filtered[100:350] 
 
-ch2_test_data=filtered2[100:350] 
+ch2_test_data=filtered_ch2[100:350] 
 
 min_val = tf.reduce_min(train_data) 
 max_val = tf.reduce_max(train_data) 
