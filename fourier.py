@@ -1,7 +1,7 @@
 filtered = butter_bandpass_filter(outputSignal[1], lowcut=2, highcut=35, fs=250, order=6) 
-data = filtered[600:850]  # range selected in which the impulse is visible 
-fft_vals = np.absolute(np.fft.rfft(data)) 
-fft_freq = np.fft.rfftfreq(len(data), 1.0/fs) 
+data_range = filtered[600:850]  # range selected in which the impulse is visible 
+fft_vals = np.absolute(np.fft.rfft(data_range)) 
+fft_freq = np.fft.rfftfreq(len(data_range), 1.0/fs) 
 
 eeg_bands = {'Delta': (2, 4), 
              'Theta': (4, 8), 
