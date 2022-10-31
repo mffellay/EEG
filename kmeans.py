@@ -2,24 +2,24 @@
 from sklearn.cluster import KMeans 
 from sklearn.preprocessing import scale 
 # Range of samples to utilize for manipulation, in this case the range is [600-850]  
-kdatos = filtered[600:850] 
-kprom=np.average(x) 
-kdatos=(kdatos-kprom) 
+kmeans_datos = filtered[600:850] 
+kmeans_promedio=np.average(x) 
+kmeans_datos=(kmeans_datos-kmeans_promedio) 
 # Range is selected then to be used for the graphics 
-kdatos_ax = range(250) 
-plt.plot(kdatos_ax, kdatos) 
+kmeans_datos_ax = range(250) 
+plt.plot(kmeans_datos_ax, kmeans_datos) 
 plt.show()
 # Data has to be reshaped into the adequate format for K-Means algorithm 
-kdatos=kdatos.reshape(-1,1) 
-kmeans = KMeans(n_clusters = 1).fit(kdatos) 
+kmeans_datos=kmeans_datos.reshape(-1,1) 
+kmeans_cluster = KMeans(n_clusters = 1).fit(kmeans_datos) 
 # Euclidean Distance calculation needs the center of the grouping 
-cent = kmeans.cluster_centers_ 
-dist= sqrt((kdatos - cent)**2) 
-order_index = argsort(dist, axis = 0) 
+center = kmeans_cluster.cluster_centers_ 
+distance= sqrt((kmeans_datos - center)**2) 
+order_index = argsort(distance, axis = 0) 
 # Sensitivity is selected here, low value = more data to group as anomalies 
 indexes = order_index[-20:] 
-values = kdatos[indexes] 
+values = kmeans_datos[indexes] 
 # Graph of original signal with the anomalies shown by the K-Means algorithm
-plt.plot(kdatos_ax, kdatos) 
+plt.plot(kmeans_datos_ax, kmeans_datos) 
 plt.scatter(indexes, values, color='r') 
 plt.show() 
